@@ -320,3 +320,43 @@ public class CalculatorMain{
  }
 
 }
+---------------------------------------------------------------------------------------------------
+
+Create two Student objects and assign the following data. Dont use user inputs.
+
+For student1
+roll 1
+name Akash
+marks1 70
+marks2 80
+grade   
+
+For student2
+roll 2
+name Suresh
+marks1 50
+marks2 60
+grade
+
+Grade will be calculated based on the average score. If average score is above 80 or equal to 80 grade as A
+if average is greater than or equal to 70 and less than 80 have the grade as B
+otherwise C
+
+
+public class Student {
+
+
+
+}
+
+public class StudentMain{
+
+ public static void main(String args[]){
+   Student student1=new Student();
+   Student student2=new Student();
+
+ }
+
+}
+
+---------------------------------------------------------------------------------------------------------
