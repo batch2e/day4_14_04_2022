@@ -1,0 +1,237 @@
+int ===> datatype
+var====> variable
+
+  int ====> we cannot write only the datatype. Alongwith the datatype we need to have variables also.
+
+  int num; 
+
+
+  class Customer{} ===> datatype like int. But int is a primitive type and class is of reference type.
+
+  So we cannot work with the class until unless we create the object of a class.
+
+ 
+  class Customer {}
+
+
+Customer cust=new Customer();
+
+ // Customer cust; // We created a reference variable whose type is Customer
+// cust=new Customer(); // new Customer() is creating a new object during runtime and the address of this object is stored in the reference variable.
+ 
+
+int *ptr;
+int num=10;
+ptr=&num;
+
+// ptr is a pointer which is storing the address of an int variable called num.
+
+----------------------------------------------------------------------------------------------------------
+  
+Whenever we are creating a class , a class will have attributes/instance variables/properties and 
+methods/behaviour
+
+ class ClassName {
+    
+   // attributes
+
+   // methods
+  }
+
+---------------------------------------------------------------------------------------------------------------
+Customer purchasing Item. 
+
+class Customer {
+ private String custId;
+ private String customerName;
+ private String mobileNumber;
+ private String address;   
+
+// whenever we are writing methods we write return type of the method and method name and the list of //parameters. In the following methods we dont have any parameters.
+// setData is a method which is currently used to store the values for the attributes 
+void setData() {
+   // setting the value
+  Scanner scan=new Scanner(System.in);
+  System.out.println("Enter the custId");
+  custId=scan.next();
+  System.out.println("Enter the customer name");
+  customerName=scan.next();
+  System.out.println("Enter the mobile number");
+  mobileNumber=scan.next();
+  System.out.println("Enter the address");
+  address=scan.next();
+ }
+
+// displayData is over displaying the value for the attributes
+ void displayData(){
+   // displaying the value
+   System.out.println(custId);
+   System.out.println(customerName);
+ } 
+
+}
+
+Q Why we should have multiple methods ?
+A We should have modular approach and the method should do one task at a time. 
+So that it makes debugging easy and easy to test code. 
+
+
+Customer cust1=new Customer();
+Customer cust2=new Customer();
+
+class Item {
+  private String itemId;
+  private String itemName;
+  private int qoh;
+  private int price;  
+}
+
+// We create a separate class to have the main method only
+
+class Purchase {
+         
+
+} 
+
+
+Q Why we require a main method?
+A Main method is entry point for the execution of the java code
+
+class Main {
+  public static void main(String args[]){
+   {
+    Customer cust1=new Customer();
+    Customer cust2=new Customer();
+     cust1.setData();
+     cust2.setData();
+     cust1.displayData();
+     cust2.displayData();
+     Item item1=new Item();
+     Item item2=new Item();
+   }
+}
+
+--------------------------------------------------------------------------------------------------------------
+You want to show a demo to a group about class and object? So what are basic things required.
+
+class Xyz{
+int attribute1;
+String attribute2;
+int attribute3;
+
+void method1() {}
+
+void method2() {}
+
+}
+
+
+class Main {
+   public static void main(String str[]){
+   Xyz x=new Xyz();
+   x.method1();
+   x.method2();
+
+  }
+}
+
+If we are writing multiple classes , in the same file we cannot make all the classes as public. 
+We make the class which is having the main method as public.
+
+So example.
+
+   CustomerMain.java
+
+   class Customer{}
+   class CustomerMain{}
+------------------------------------------------------------------------------------------------------------  
+Customer.java
+
+  import java.util.Scanner;
+
+class Customer {
+  private int id;
+  private String name;
+  private String address;
+  
+public void setData() {
+	  Scanner scan=new Scanner(System.in);
+	  System.out.println("Enter the id");
+	  id=scan.nextInt();
+	  System.out.println("Enter the name");
+	  name=scan.next();
+	  System.out.println("Enter the address");
+	  address=scan.next(); 
+	  
+}
+
+  public void displayData() {
+  System.out.println(id);
+  System.out.println(name);
+  System.out.println(address);
+}
+  
+}
+
+public class CustomerMain{
+  public static void main(String args[])
+  {
+	 Customer cust=new Customer();
+	 cust.displayData();// default values are shown , for int it will be 0 and for String it will be null
+	 cust.setData();
+	 cust.displayData();
+	  
+  }
+}
+
+
+int ===> 0
+float ===> 0.0
+object===> null
+default value is the value which is used for automatic initialisation of the members which writing any 
+code for initialisation.
+
+-------------------------------------------------
+To rename a class , right click on the class name in package explorer===> Refractor ====> rename
+
+
+
+import java.util.Scanner;
+
+class Customer {
+  private int id;
+  private String name;
+  private String address;
+  public void setData() {
+	  Scanner scan=new Scanner(System.in);
+	  System.out.println("Enter the id");
+	  id=scan.nextInt();
+	  System.out.println("Enter the name");
+	  name=scan.next();
+	  System.out.println("Enter the address");
+	  address=scan.next(); 
+}
+  public void displayData() {
+  System.out.println(id);
+  System.out.println(name);
+  System.out.println(address);
+}
+ 
+}
+
+public class CustomerMain{
+	
+  public static void main(String args[])
+  {
+	 Customer cust=new Customer();
+	 cust.displayData();// default values are shown , for int it will be 0 and for String it will be null
+	 cust.setData();
+	 cust.displayData();
+	  
+	
+  }
+}
+-------------------------------------------------------------------------------------------------------
+
+
+
