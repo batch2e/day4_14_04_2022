@@ -661,3 +661,238 @@ public class NumbersMain5{
    }
 }
  
+--------------------------------------------------------------------------------------------------------------------
+public class Employee {
+private int id;
+private String name;
+private String desig;
+private String dept;
+private long basic;
+
+Employee(int i,String nm, String dsg, String dpt, long bs)
+{
+	id=i;
+	name=nm;
+	desig=dsg;
+	dept=dpt;
+	basic=bs;
+}
+
+void setData(int i,String nm, String dsg, String dpt, long bs) {
+	id=i;
+	name=nm;
+	desig=dsg;
+	dept=dpt;
+	basic=bs;
+	
+}
+
+void display() {
+	System.out.println(id);
+	System.out.println(name);
+	System.out.println(desig);
+	System.out.println(dept);
+	System.out.println(basic);
+	
+}
+
+}
+
+
+
+public class EmployeeMain {
+
+	public static void main(String[] args) {
+		Employee employee=new Employee(1,"Rohan","Mgr","HR",34000);
+		employee.display();
+		employee.setData(1,"Rohit","Mgr","HR",44000);
+		employee.display();
+
+	}
+
+}
+-------------------------------------------------------------------------------------------------
+Q If we keep the parameter names and the instance variable names same , in that case what will happen?
+A In that case the parameters which are local variables shadows the instance variables.
+
+
+public class Employee2 {
+private int id;
+private String name;
+private String desig;
+private String dept;
+private long basic;
+
+Employee2(int id,String name, String desig, String dept, long basic)
+{
+	id=id;
+	name=name;
+	desig=desig;
+	dept=dept;
+	basic=basic;
+}
+
+void setData(int id,String name, String desig, String dept, long basic) {
+	// To the local id we are assigning the value of local id
+	id=id;
+	name=name;
+	desig=desig;
+	dept=dept;
+	basic=basic;
+}
+	
+
+
+void display() {
+	System.out.println(id);
+	System.out.println(name);
+	System.out.println(desig);
+	System.out.println(dept);
+	System.out.println(basic);
+	
+}
+
+}
+
+
+public class EmployeeMain2 {
+
+	public static void main(String[] args) {
+		Employee2 employee=new Employee2(1,"Rohan","Mgr","HR",34000);  0 null null null 0
+		employee.display();
+		employee.setData(1,"Rohit","Mgr","HR",44000);
+		employee.display();   0 null null null 0
+
+	}
+
+}
+---------------------------------------------------------------------------------------------------------------------------------------
+Q What is the solution if we want to keep the instance variable and the parameter name same?
+A make use of this keyword alongwith the instance variable. this represents the current object. 
+
+
+public class Employee3 {
+private int id;
+private String name;
+private String desig;
+private String dept;
+private long basic;
+
+Employee3(int id,String name, String desig, String dept, long basic)
+{
+	this.id=id;
+	this.name=name;
+	this.desig=desig;
+	this.dept=dept;
+	this.basic=basic;
+}
+
+void setData(int id,String name, String desig, String dept, long basic) {
+	// To the local id we are assigning the value of local id
+	this.id=id;
+	this.name=name;
+	this.desig=desig;
+	this.dept=dept;
+	this.basic=basic;
+}
+	
+
+
+void display() {
+	System.out.println(id);
+	System.out.println(name);
+	System.out.println(desig);
+	System.out.println(dept);
+	System.out.println(basic);
+	
+}
+
+}
+
+public class EmployeeMain3 {
+
+	public static void main(String[] args) {
+		Employee3 employee=new Employee3(1,"Rohan","Mgr","HR",34000);
+		employee.display();
+		employee.setData(1,"Rohit","Mgr","HR",44000);
+		employee.display();
+
+	}
+
+}
+-------------------------------------------------------------------------------------------------------------------------------------
+Do we have any other usage of this apart from the usage which we have seen just now?
+Yes, it is used for constructor chaining.
+
+What is constructor chaining?
+When we invoke one of the constructor from another constructor, it is called constructor chaining.
+
+
+Without constructor chaining
+
+public class Item1 {
+   private int id;
+   private String desc;
+   private float price;
+
+   Item1(){
+     id=1;
+     desc="Coffee";
+     price=100;
+    }
+
+   Item1(int id, String desc, float price){
+    this.id=id;
+    this.desc=desc;
+    this.price=price;
+   }
+
+   void display(){
+    System.out.println("The id :"+id);
+    System.out.println("The desc :"+desc);
+    System.out.println("The price :"+price);
+   }
+}
+
+public class ItemMain1 {
+   public static void main(String args[]) {
+    Item1 item1=new Item1();
+    item1.display();
+    Item1 item2=new Item1(2,"Tea",50);
+    item2.display();
+  }
+}
+--------------------------------------------------------------------------------------------------------------------------------------------------
+ 
+  With constructor chaining
+
+public class Item2 {
+   private int id;
+   private String desc;
+   private float price;
+
+   Item2(){
+    this(1,"Coffee",100);
+    }
+
+   Item2(int id, String desc, float price){
+    this.id=id;
+    this.desc=desc;
+    this.price=price;
+   }
+
+   void display(){
+    System.out.println("The id :"+id);
+    System.out.println("The desc :"+desc);
+    System.out.println("The price :"+price);
+   }
+}
+
+public class ItemMain2 {
+   public static void main(String args[]) {
+    Item2 item1=new Item2();
+    item1.display();
+    Item2 item2=new Item2(2,"Tea",50);
+    item2.display();
+  }
+}
