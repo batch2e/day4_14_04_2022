@@ -231,7 +231,92 @@ public class CustomerMain{
 	
   }
 }
+So we should either say cust is an object of Customer type.
+cust is a reference variable which is storing the address of a newly created object. 
+Customer cust=new Customer();
+The object is getting created in the RHS of the expression.
 -------------------------------------------------------------------------------------------------------
+Q While using the Scanner class we wrote import statement but while writing our code with Food and Tester,
+In the Tester class we are not writing any import statement for Food. So what is the reason?
+A both Tester and Food classes are in the same package which is in default one. That is the reason
+we need not mention any import statement for Food.
+---------------------------------------------------------------------------------------------------------------
+
+// id,name and address in Customer1 class are the member variables
+// instance variables of the Customer1 class and hence they 
+// are accessible by all the methods of the same class.
+// But id,name and address mentioned within the main method
+// are local variables to the main method
+// local variables are those variables which are defined
+// within the scope of a method
+// In the setData method the parameters like i,nm and add 
+// are local variables.
+// i,nm and add cannot be accessed by other methods like displayData
+// because they are local to the setData method.
+public class Customer1 {
+  private int id;
+  private String name;
+  private String address;
+
+  public void setData(int i, String nm, String add) {
+   id=i;
+   name=nm;
+   address=add;
+	
+}
+  public void displayData() {
+  System.out.println(id);
+  System.out.println(name);
+  System.out.println(address);
+}
+ 
+}
 
 
+import java.util.Scanner;
+public class CustomerMain1{
+	
+  public static void main(String args[])
+  {
+	 Customer1 cust=new Customer1();
+         Scanner sc=new Scanner(System.in);
+         System.out.println("Enter the id for the customer");
+         int id=sc.nextInt();
+         System.out.println("Enter the name for the customer");
+         String name=sc.next();
+   	 System.out.println("Enter the address for the customer");
+         String address=sc.next();
+         cust.setData(id,name,address);  // we are passsing the arguments to the setData method
+	 cust.displayData();
+	  
+	
+  }
+}
+------------------------------------------------------------------------
+Design two classes one is Calculator and another is Calculator main. Calculator class will have
+two variables and 4 methods like add , subtract, divide , multiply.
 
+public class Calculator{
+
+void setData(int n1, int n2){
+   num1=n1;
+   num2=n2;
+}
+
+ //add()
+ //subtract()
+ //divide()
+ //multiply()
+}
+
+public class CalculatorMain{
+
+  public static void main(String args[]){
+   Calculator calc=new Calculator();
+   calc.setData(10,5);
+   System.out.println("The value of adding numbers"+result);
+   System.out.println("The value after subtracting one number from other"+result);
+   // display for multiply and divide also
+ }
+
+}
