@@ -364,13 +364,300 @@ if average is greater than or equal to 70 and less than 80 have the grade as B
 otherwise C
 
 public class Student {
+private int roll;
+private String name;
+private float marks1;
+private float marks2;
+private char grade;
+
+void setData(int r,String n, float m1, float m2){
+roll=r;
+name=n;
+marks1=m1;
+marks2=m2;
 }
+
+void decideGrade(){
+  float avg=(marks1+marks2)/2;
+  grade=(avg>=80)?'A':(avg>=70)?'B':'C';
+ }
+
+void displayData(){
+System.out.println("roll "+roll);
+System.out.println("name "+name);
+System.out.println("marks1 "+marks1);
+System.out.println("marks2 "+marks2);
+System.out.println("grade "+grade);
+}
+
+}
+
 
 public class StudentMain{
  public static void main(String args[]){
    Student student1=new Student();
+   student1.setData(1,"Akash",70,80);
+   student1.decideGrade();
+   student1.displayData(); 
+
    Student student2=new Student();
+   student2.setData(2,"Suresh",50,60);
+   student2.decideGrade();
+   student2.displayData();
  }
 }
 
 ---------------------------------------------------------------------------------------------------------
+
+public class Student {
+private int roll;
+private String name;
+private float marks1;
+private float marks2;
+private char grade;
+
+void setData(int r,String n, float m1, float m2){
+roll=r;
+name=n;
+marks1=m1;
+marks2=m2;
+}
+
+private char decideGrade(){
+  float avg=(marks1+marks2)/2;
+  char gr=(avg>=80)?'A':(avg>=70)?'B':'C';
+  return gr; 
+}
+
+/* private void decideGrade(){
+  float avg=(marks1+marks2)/2;
+  grade=(avg>=80)?'A':(avg>=70)?'B':'C';
+  System.out.println("grade "+grade);  
+} */
+
+void displayData(){
+System.out.println("roll "+roll);
+System.out.println("name "+name);
+System.out.println("marks1 "+marks1);
+System.out.println("marks2 "+marks2);
+grade=decideGrade();
+//decideGrade();
+System.out.println("grade "+grade);
+}
+
+}
+
+
+
+public class StudentMain{
+ public static void main(String args[]){
+   Student student1=new Student();
+   student1.setData(1,"Akash",70,80);
+   student1.displayData(); 
+
+   Student student2=new Student();
+   student2.setData(2,"Suresh",50,60);
+   student2.displayData();
+ }
+}
+---------------------------------------------------------------------------------------------------------
+Constructors
+* Constructors are used to initialise member variables and so ultimately initialising objects.
+* Constructors are having the same name as that of the class name.
+* Constructors are methods.
+* With constructor we dont write any return type.
+* We can have two types of cosntructor - 1)default/parameterless 2) parameterized constructor
+
+public class Numbers1{
+   private int num1;
+   private int num2;
+  
+   void setData(int n1, int n2){
+    num1=n1;
+    num2=n2;
+   }
+
+   void dispData(){
+   System.out.println(num1);
+   System.out.println(num2);
+   }
+ }
+
+public class NumbersMain1 {
+   public static void main(String args[]){
+      Numbers1 number=new Numbers1();  // Number1() is a parmeterless/default constructor
+      number.dispData();  // 0 0
+      number.setData(3,4);
+      number.dispData();  // 3 4
+    }
+ } 
+  
+Q How the member variables are getting the default value as 0?
+A because of the constructor. Though currently in our code , we have not defined any constructor but
+  during the compilation time , the code is provided with the default constructor.
+
+----------------------------------------------------------------------------------------------------
+Q Can we define our own default or parameterless constructor?
+A Yes
+
+public class Numbers2{
+   private int num1;
+   private int num2;
+  // The below is the parameterless constructor
+   Numbers2(){
+    num1=1;
+    num2=2;
+   }
+
+   void setData(int n1, int n2){
+    num1=n1;
+    num2=n2;
+   }
+
+   void dispData(){
+   System.out.println(num1);
+   System.out.println(num2);
+   }
+ }
+
+public class NumbersMain2 {
+   public static void main(String args[]){
+      Numbers2 number=new Numbers2();  // Number2() is a parmeterless/default constructor
+      number.dispData();  // 1 2
+      number.setData(3,4);
+      number.dispData();  // 3 4
+    }
+ } 
+  
+------------------------------------------------------------------------------------------------
+
+ Q What about parameterized constructor?
+ A 
+
+public class Numbers3{
+   private int num1;
+   private int num2;
+  // The below is the parameter constructor
+   Numbers3(int n1,int n2){
+    num1=n1;
+    num2=n2;
+   }
+
+   void setData(int n1, int n2){
+    num1=n1;
+    num2=n2;
+   }
+
+   void dispData(){
+   System.out.println(num1);
+   System.out.println(num2);
+   }
+ }
+
+public class NumbersMain3 {
+   public static void main(String args[]){
+      Numbers3 number=new Numbers3(1,2);  // Number2(1,2) is a parmeterized constructor
+      number.dispData();  // 1 2
+      number.setData(3,4);
+      number.dispData();  // 3 4
+    }
+ } 
+ 
+-------------------------------------------------------------------------------------------------------
+Q Can we have both parameterless and parameterized constructor in the same class.
+A Yes we can have. In the below example while creation of number1 , parameterless constructor is invoked
+and while creation of number2 parameterized constructor is invoked.
+
+
+public class Numbers4{
+   private int num1;
+   private int num2;
+  // The below is the parameterless constructor
+  Numbers4(){
+   num1=1;
+   num2=2;
+  }
+  // The below is the parameterized constructor
+   Numbers4(int n1,int n2){
+    num1=n1;
+    num2=n2;
+   }
+
+   void setData(int n1, int n2){
+    num1=n1;
+    num2=n2;
+   }
+
+   void dispData(){
+   System.out.println(num1);
+   System.out.println(num2);
+   }
+ }
+
+public class NumbersMain4 {
+   public static void main(String args[]){
+      Numbers4 number1=new Numbers4();  // Number4() is a parmeterless constructor
+      Numbers4 number2=new Numbers4(3,4); // Number4(int,int) is a parameterized constructor
+      number1.dispData();  // 1 2 
+      number1.setData(100,200);
+      number1.dispData();  //100 200
+      number2.dispData();  // 3 4 
+      number2.setData(300,400);
+      number2.dispData();  //300 400
+   
+    }
+ } 
+--------------------------------------------------------------------------------------------------------
+We can have one parameterless constructor and we can have multiple parameterized constructors. But those
+multiple parameterized constructor should have different numbers of parameter or different datatypes.
+
+public class Numbers5 {
+   private int num1;
+   private int num2;
+   private float f1;
+   private float f2;
+
+  Numbers5(){
+    num1=1;
+    num2=2;
+    f1=12.34f;
+    f2=12.345f;
+  }
+
+ Numbers5(int n1,int n2, float ff1, float ff2){
+    num1=n1;
+    num2=n2;
+    f1=ff1;
+    f2=ff2;
+   }
+
+  Numbers5(int n1,int n2){
+   num1=n1;
+   num2=n2;
+  }
+
+  Numbers5(float ff1, float ff2){
+   f1=ff1;
+   f2=ff2;
+  }
+
+  Numbers5(int n1, float ff1){
+   num1=n1;
+   f2=ff1;
+  }
+
+/* Numbers5(int nn1,int nn2){
+  num1=nn1;
+  num2=nn2; 
+} */
+}
+
+public class NumbersMain5{
+  public static void main(String args[]) {
+     Numbers5 number1=new Numbers5();
+     Numbers5 number2=new Numbers5(1,2);
+     Numbers5 number3=new Numbers5(1.2f,3.4f);
+     Numbers5 number4=new Numbers(1,3,2.35f,4.5f);
+   }
+}
+ 
