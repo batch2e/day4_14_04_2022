@@ -896,3 +896,57 @@ public class ItemMain2 {
     item2.display();
   }
 }
+----------------------------------------------------------------
+In constructor chaining , calling the other constructor with this should be the first line otherwise it is a compilation error
+The below constructor writing is incorrect.  
+
+Item2(){
+    System.out.println("Constructor");
+    this(1,"Coffee",100);
+    }
+
+The below constructor writing is fine as the constructor call with this is the first line.
+Item2(){
+    
+    this(1,"Coffee",100);
+    System.out.println("Constructor");
+    }
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+this() cannot be used inside a method. 
+
+  example you cannot write
+
+   void display(){
+     this();
+   }
+------------------------------------------------------------------------------------------------------------------------------------------------------
+Memory Management:
+
+One reference variable can point to one and only one object at a time.
+
+1. Customer cust=new Customer();
+2. cust=new Customer(); 
+
+Two objects got create. One object got created in line1 and in the second line another object got created and the address which was there with cust for the
+object created in line 1 is overwritten by the object reference created in line2. The object which was created in line1 is not refered by the program 
+which means it is eligible for garbage collection. 
+
+
+One object can be referenced by multiple reference variables at any given point of time.
+
+1. Customer cust1=new Customer();
+2. Customer cust2=cust1;
+
+Both cust1 and cust2 are pointing to the same object created in line1.
+
+
+When an object does not have any reference, it becomes eligible for garbage collection.
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+public getData(){
+   Scanner scan=new Scanner(System.in);
+
+ }
+
